@@ -1,0 +1,38 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+
+  .container{
+    position: absolute;
+    top: 140px;
+
+    .cardContent {
+      padding: 35px 75px 50px;
+      @media screen and (max-width: 910px){
+        padding: 16px 16px 24px;
+      }
+
+      .title {
+        text-align: center;
+      }
+
+      .description {
+        margin-top: 50px;
+      }
+    }
+
+    .link {
+      margin-top: 35px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      font-weight: 700;
+      color: #363636;
+
+      .arrow {
+        font-size: 18px;
+        margin-right: 6px;
+      }
+    }
+  }
+}
