@@ -1,0 +1,23 @@
+.container {
+  padding: 50px 0;
+  @media screen and (max-width: 1250px){
+    padding: 50px 20px 0;
+  }
+
+  .searchTitle {
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .results {
+    font-weight: 600;
+  }
+
+  .gridBlock {
+    justify-content: space-between;
+    margin-top: 21px;
+    @media screen and (max-width: 1170px){
+      justify-content: space-evenly;
+    }
+  }
+}
