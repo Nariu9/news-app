@@ -1,0 +1,36 @@
+.card {
+  max-width: 360px;
+
+  .cardContent {
+    padding: 25px;
+
+    .dateBlock {
+      color: #868686;
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 25px;
+
+      .calendar {
+        font-size: 18px;
+        margin-right: 8px;
+      }
+    }
+
+    .description {
+      margin: 20px 0;
+    }
+
+    .link {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      font-weight: 700;
+      color: #363636;
+
+      .arrow {
+        font-size: 18px;
+        margin-left: 6px;
+      }
+    }
+  }
+}
