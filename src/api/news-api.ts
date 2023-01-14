@@ -7,6 +7,9 @@ const instance = axios.create({
 export const newsAPI = {
     getArticles () {
         return instance.get<ArticleType[]>('articles?_limit=60')
+    },
+    getArticle (id: string) {
+        return instance.get<ArticleType>(`articles/${id}`)
     }
 }
 
