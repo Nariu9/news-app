@@ -11,18 +11,37 @@ export const fetchArticles = createAsyncThunk('news/fetchArticles', async (arg, 
     }
 })
 
+export const fetchArticleById = createAsyncThunk('news/fetchArticleById', async (articleId: string, {rejectWithValue})=> {
+    try {
+        const res = await newsAPI.getArticle(articleId)
+        return res.data
+    } catch (e) {
+        return rejectWithValue(null)
+    }
+})
+
 export const newsSlice = createSlice({
     name: 'news',
     initialState: {
-        articles: [] as ArticleType[]
+        articles: [] as ArticleType[],
+        article: {} as ArticleType
     },
-    reducers: {},
+    reducers: {
+        clearArticleData:(state) => {
+            state.article = {} as ArticleType
+        }
+    },
     extraReducers: builder => {
         builder
             .addCase(fetchArticles.fulfilled, (state, action) => {
                 state.articles = action.payload
             })
+            .addCase(fetchArticleById.fulfilled, (state, action) => {
+                state.article = action.payload
+            })
     }
 })
 
+
+export  const {clearArticleData} = newsSlice.actions
 export const newsReducer = newsSlice.reducer
