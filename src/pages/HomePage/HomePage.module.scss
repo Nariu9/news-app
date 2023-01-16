@@ -1,6 +1,6 @@
 .container {
   padding: 50px 0;
-  @media screen and (max-width: 1250px){
+  @media screen and (max-width: 1250px) {
     padding: 50px 20px 0;
   }
 
@@ -16,8 +16,13 @@
   .gridBlock {
     justify-content: space-between;
     margin-top: 21px;
-    @media screen and (max-width: 1170px){
+    @media screen and (max-width: 1170px) {
       justify-content: space-evenly;
     }
+  }
+
+  .noArticles {
+    margin-top: 130px;
+    text-align: center;
   }
 }
