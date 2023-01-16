@@ -1,0 +1,17 @@
+.link {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  color: #363636;
+
+  .arrowBack {
+    font-size: 18px;
+    margin-right: 6px;
+  }
+
+  .arrowForward {
+    font-size: 18px;
+    margin-left: 6px;
+  }
+}
