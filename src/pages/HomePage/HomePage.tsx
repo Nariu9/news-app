@@ -4,42 +4,17 @@ import { Search } from '../../features/Search/Search'
 import { ArticleCard } from '../../features/ArticleCard/ArticleCard'
 import { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../common/hooks/hooks'
-import { fetchArticles } from '../../features/News/newsSlice'
+import { fetchArticles } from '../../app/newsSlice'
 import { Preloader } from '../../common/components/Preloader/Preloader'
-import { type ArticleType } from '../../api/news-api'
+import { useSearch } from '../../common/hooks/useSearch'
+import { useDebounce } from '../../common/hooks/useDebounce'
 
 export const HomePage = () => {
   const dispatch = useAppDispatch()
   const { articles, isLoading } = useAppSelector((state) => state.news)
-  const articlesNumber = articles.length
   const [search, setSearch] = useState('')
-  const [searchData, setSearchData] = useState<ArticleType[]>([])
-
-  const getSearchValueHandler = (searchValue: string) => {
-    setSearch(searchValue)
-    const newArr = articles
-      .filter(
-        (item) =>
-          item.title.toLowerCase().includes(searchValue.toLowerCase()) ||
-          item.summary.includes(searchValue.toLowerCase())
-      )
-      .map((item) => {
-        const newTitle = item.title.replace(
-          new RegExp(searchValue, 'gi'),
-          (match) => `<mark style="background: yellow">${match}</mark>`
-        )
-        const newSummary = item.summary.replace(
-          new RegExp(searchValue, 'gi'),
-          (match) => `<mark style="background: yellow">${match}</mark>`
-        )
-        return {
-          ...item,
-          title: newTitle,
-          summary: newSummary,
-        }
-      })
-    setSearchData(newArr)
-  }
+  const debouncedSearchValue = useDebounce(search)
+  const articlesToRender = useSearch(debouncedSearchValue, articles)
 
   useEffect(() => {
     dispatch(fetchArticles())
@@ -54,29 +29,14 @@ export const HomePage = () => {
       <Typography variant={'subtitle1'} component={'h3'} className={classes.searchTitle}>
         Filter by keywords
       </Typography>
-      <Search searchValue={search} getSearchValue={getSearchValueHandler} />
-      {articlesNumber > 0 ? (
-        <Typography variant={'subtitle1'} component={'p'} gutterBottom className={classes.results}>
-          {articlesNumber > 1 || searchData.length > 1 ? 'Results' : 'Result'}:{' '}
-          {search.length > 0 ? searchData.length : articles.length}
-        </Typography>
-      ) : (
-        <Typography variant={'subtitle1'} component={'p'} gutterBottom className={classes.results}>
-          Results: 0
-        </Typography>
-      )}
+      <Search searchValue={search} getSearchValue={setSearch} />
+      <Typography variant={'subtitle1'} component={'p'} gutterBottom className={classes.results}>
+        Results: {articlesToRender.length}
+      </Typography>
       <Divider />
-      {search.length > 0 && searchData.length > 0 ? (
+      {articlesToRender.length > 0 ? (
         <Grid container spacing={3} className={classes.gridBlock}>
-          {searchData.map((article) => (
-            <Grid item key={article.id}>
-              <ArticleCard article={article} />
-            </Grid>
-          ))}
-        </Grid>
-      ) : articles.length > 0 ? (
-        <Grid container spacing={3} className={classes.gridBlock}>
-          {articles.map((article) => (
+          {articlesToRender.map((article) => (
             <Grid item key={article.id}>
               <ArticleCard article={article} />
             </Grid>
@@ -84,7 +44,7 @@ export const HomePage = () => {
         </Grid>
       ) : (
         <Typography variant={'h5'} component={'h3'} className={classes.noArticles}>
-          There is no articles to show
+          There is no articles to show{search && ` by "${debouncedSearchValue}" keyword`}
         </Typography>
       )}
     </Container>
