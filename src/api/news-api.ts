@@ -1,36 +1,36 @@
-import axios from 'axios';
+import axios from 'axios'
 
 const instance = axios.create({
-    baseURL: 'https://api.spaceflightnewsapi.net/v3/'
+  baseURL: 'https://api.spaceflightnewsapi.net/v3/',
 })
 
 export const newsAPI = {
-    getArticles () {
-        return instance.get<ArticleType[]>('articles?_limit=60')
-    },
-    getArticle (id: string) {
-        return instance.get<ArticleType>(`articles/${id}`)
-    }
+  getArticles() {
+    return instance.get<ArticleType[]>('articles?_limit=60')
+  },
+  getArticle(id: string) {
+    return instance.get<ArticleType>(`articles/${id}`)
+  },
 }
 
 export type ArticleType = {
-  id: number;
-  title: string;
-  url: string;
-  imageUrl: string;
-  newsSite: string;
-  summary: string;
-  publishedAt: string;
-  updatedAt: string;
-  featured: boolean;
-  launches: LaunchType[] | [];
-  events: EventType[] | [];
+  id: number
+  title: string
+  url: string
+  imageUrl: string
+  newsSite: string
+  summary: string
+  publishedAt: string
+  updatedAt: string
+  featured: boolean
+  launches: LaunchType[] | []
+  events: EventType[] | []
 }
 type LaunchType = {
-    id: string
-    provider: string
+  id: string
+  provider: string
 }
 type EventType = {
-    id: number
-    provider: string
+  id: number
+  provider: string
 }

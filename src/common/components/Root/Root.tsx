@@ -1,2 +1,2 @@
-import {Outlet} from 'react-router-dom';
-export const Root = () => <Outlet/>
+import { Outlet } from 'react-router-dom'
+export const Root = () => <Outlet />
