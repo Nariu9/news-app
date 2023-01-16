@@ -2,11 +2,10 @@ import { type FC } from 'react'
 import { type ArticleType } from '../../api/news-api'
 import { formatDate } from '../../common/utils/formatDate'
 import { Card, CardContent, Typography } from '@mui/material'
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import CalendarTodayOutlinedIcon from '@mui/icons-material/CalendarTodayOutlined'
 import classes from './ArticleCard.module.scss'
-import { Link } from 'react-router-dom'
 import { Image } from 'mui-image'
+import { NavArrow } from '../../common/components/NavArrow/NavArrow'
 
 type ArticleCardType = {
   article: ArticleType
@@ -26,9 +25,7 @@ export const ArticleCard: FC<ArticleCardType> = ({ article }) => (
         className={classes.description}
         dangerouslySetInnerHTML={{ __html: article.summary }}
       />
-      <Link to={`article/${article.id}`} className={classes.link}>
-        Read more <ArrowForwardIcon className={classes.arrow} />
-      </Link>
+      <NavArrow text={'Read more'} to={`articles/${article.id}`} goBack={false} />
     </CardContent>
   </Card>
 )

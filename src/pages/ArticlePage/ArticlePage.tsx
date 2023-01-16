@@ -1,12 +1,12 @@
 import { useAppDispatch, useAppSelector } from '../../common/hooks/hooks'
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import React, { useEffect } from 'react'
-import { clearArticleData, fetchArticleById } from '../../features/News/newsSlice'
+import { clearArticleData, fetchArticleById } from '../../app/newsSlice'
 import { Box, Card, CardContent, Container, Typography } from '@mui/material'
 import classes from './ArticlePage.module.scss'
-import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import { Preloader } from '../../common/components/Preloader/Preloader'
 import { Image } from 'mui-image'
+import { NavArrow } from '../../common/components/NavArrow/NavArrow'
 
 export const ArticlePage = () => {
   const { id } = useParams()
@@ -27,9 +27,9 @@ export const ArticlePage = () => {
 
   return (
     <Box className={classes.wrapper}>
-      <Image src={article.imageUrl} height={'245px'} />
+      <Image src={article.imageUrl || 'https://t.ly/VuHn4'} height={'245px'} />
       <Container maxWidth={'lg'} className={classes.container}>
-        <Card>
+        <Card className={classes.card}>
           <CardContent className={classes.cardContent}>
             <Typography variant='h5' component='h3' className={classes.title}>
               {article.title ? article.title : 'Something went wrong, please try again later'}
@@ -39,9 +39,7 @@ export const ArticlePage = () => {
             </Typography>
           </CardContent>
         </Card>
-        <Link to={'/'} className={classes.link}>
-          <ArrowBackIcon className={classes.arrow} /> Back to homepage
-        </Link>
+        <NavArrow text='Back to homepage' to={'/'} goBack />
       </Container>
     </Box>
   )
