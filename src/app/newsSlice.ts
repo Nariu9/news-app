@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { ArticleType, newsAPI } from '../../api/news-api'
+import { ArticleType, newsAPI } from '../api/news-api'
 import { AxiosError } from 'axios'
 
 export const fetchArticles = createAsyncThunk<ArticleType[], undefined, { rejectValue: string }>(
@@ -56,7 +56,14 @@ export const newsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchArticles.fulfilled, (state, action) => {
-        state.articles = action.payload
+        state.articles = action.payload.map((article) =>
+          article.summary.length > 100
+            ? {
+                ...article,
+                summary: `${article.summary.substring(0, 100)}...`,
+              }
+            : article
+        )
       })
       .addCase(fetchArticles.rejected, (state, action) => {
         if (action.payload) state.error = action.payload
