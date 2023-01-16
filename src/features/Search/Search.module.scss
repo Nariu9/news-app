@@ -1,0 +1,12 @@
+.searchBlock {
+  max-width: 600px;
+  margin-bottom: 40px;
+
+  .searchInput {
+    width: 90%;
+
+    @media screen and (max-width: 475px) {
+      width: 80%;
+    }
+  }
+}
