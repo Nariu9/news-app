@@ -1,0 +1,15 @@
+.container {
+  height: 60vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .subtitle {
+    margin-bottom: 35px;
+
+    .emoji {
+      margin-left: 10px;
+      font-size: 26px;
+    }
+  }
+}
