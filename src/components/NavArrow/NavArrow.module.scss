@@ -1,9 +1,11 @@
+@import '../../common/styles/mixins';
+
 .link {
   text-decoration: none;
-  display: flex;
-  align-items: center;
+  @include flex(flex-start, center, row);
   font-weight: 700;
   color: #363636;
+  width: fit-content;
 
   .arrowBack {
     font-size: 18px;

@@ -1,8 +1,9 @@
+@import '../../common/styles/mixins';
+
 .container {
   height: 60vh;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  @include flex(center, center, column);
+  text-align: center;
 
   .subtitle {
     margin-bottom: 35px;

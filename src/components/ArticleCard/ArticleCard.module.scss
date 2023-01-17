@@ -1,3 +1,5 @@
+@import '../../common/styles/mixins';
+
 .card {
   max-width: 360px;
 
@@ -6,8 +8,7 @@
 
     .dateBlock {
       color: #868686;
-      display: flex;
-      align-items: flex-start;
+      @include flex(flex-start, flex-start, row);
       margin-bottom: 25px;
 
       .calendar {

@@ -1,6 +1,7 @@
+@import '../../common/styles/mixins';
+
 .wrapper {
-  display: flex;
-  justify-content: center;
+  @include flex(center, normal, row);
 
   .container {
     position: absolute;
