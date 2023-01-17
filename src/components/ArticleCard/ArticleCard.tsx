@@ -1,11 +1,13 @@
-import { type FC } from 'react'
-import { type ArticleType } from '../../api/news-api'
+import { FC } from 'react'
+import { ArticleType } from '../../api/news-api'
 import { formatDate } from '../../common/utils/formatDate'
-import { Card, CardContent, Typography } from '@mui/material'
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import Typography from '@mui/material/Typography'
 import CalendarTodayOutlinedIcon from '@mui/icons-material/CalendarTodayOutlined'
 import classes from './ArticleCard.module.scss'
 import { Image } from 'mui-image'
-import { NavArrow } from '../../common/components/NavArrow/NavArrow'
+import { NavArrow } from '../NavArrow/NavArrow'
 
 type ArticleCardType = {
   article: ArticleType

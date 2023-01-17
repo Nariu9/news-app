@@ -7,11 +7,11 @@ import {
   Route,
   RouterProvider,
 } from 'react-router-dom'
-import { HomePage } from '../pages/HomePage/HomePage'
-import { ArticlePage } from '../pages/ArticlePage/ArticlePage'
-import { Root } from '../common/components/Root/Root'
-import { PageNotFound } from '../pages/PageNotFound/PageNotFound'
-import { ErrorSnackbar } from '../common/components/ErrorSnackbar/ErrorSnackbar'
+import { HomePage } from '../features/HomePage/HomePage'
+import { ArticlePage } from '../features/ArticlePage/ArticlePage'
+import { Root } from '../components/Root/Root'
+import { PageNotFound } from '../features/PageNotFound/PageNotFound'
+import { ErrorSnackbar } from '../components/ErrorSnackbar/ErrorSnackbar'
 
 const router = createBrowserRouter(
   createRoutesFromElements(

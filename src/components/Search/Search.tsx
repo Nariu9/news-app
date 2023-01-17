@@ -3,7 +3,7 @@ import IconButton from '@mui/material/IconButton'
 import InputBase from '@mui/material/InputBase'
 import Paper from '@mui/material/Paper'
 import SearchIcon from '@mui/icons-material/Search'
-import { type ChangeEvent, type FC } from 'react'
+import { ChangeEvent, FC } from 'react'
 
 type SearchType = {
   searchValue: string

@@ -1,7 +1,7 @@
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import classes from './PageNotFound.module.scss'
-import { NavArrow } from '../../common/components/NavArrow/NavArrow'
+import { NavArrow } from '../../components/NavArrow/NavArrow'
 import React from 'react'
 
 export const PageNotFound = () => (

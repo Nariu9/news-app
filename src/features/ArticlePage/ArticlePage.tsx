@@ -1,12 +1,16 @@
 import { useAppDispatch, useAppSelector } from '../../common/hooks/hooks'
 import { useParams } from 'react-router-dom'
-import React, { useEffect } from 'react'
-import { clearArticleData, fetchArticleById } from '../../app/newsSlice'
-import { Box, Card, CardContent, Container, Typography } from '@mui/material'
+import { useEffect } from 'react'
+import { clearArticleData, fetchArticleById } from '../../store/newsSlice'
+import Box from '@mui/material/Box'
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import Container from '@mui/material/Container'
+import Typography from '@mui/material/Typography'
 import classes from './ArticlePage.module.scss'
-import { Preloader } from '../../common/components/Preloader/Preloader'
+import { Preloader } from '../../components/Preloader/Preloader'
 import { Image } from 'mui-image'
-import { NavArrow } from '../../common/components/NavArrow/NavArrow'
+import { NavArrow } from '../../components/NavArrow/NavArrow'
 
 export const ArticlePage = () => {
   const { id } = useParams()
