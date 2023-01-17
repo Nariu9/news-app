@@ -77,5 +77,6 @@ export const newsSlice = createSlice({
   },
 })
 
+export type NewsInitialStateType = ReturnType<typeof newsSlice.getInitialState>
 export const { clearArticleData, resetError, changeRequestStatus } = newsSlice.actions
 export const newsReducer = newsSlice.reducer
