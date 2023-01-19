@@ -1,8 +1,10 @@
 import { useMemo } from 'react'
-import { ArticleType } from '../../api/news-api'
+import { useAppSelector } from './hooks'
 
-export const useSearch = (searchValue: string, articles: ArticleType[]) =>
-  useMemo(() => {
+export const useSearch = (searchValue: string) => {
+  const articles = useAppSelector((state) => state.news.articles)
+
+  return useMemo(() => {
     if (searchValue.trim() === '') {
       return articles
     }
@@ -39,3 +41,4 @@ export const useSearch = (searchValue: string, articles: ArticleType[]) =>
       }
     })
   }, [searchValue, articles])
+}

@@ -14,10 +14,10 @@ import { useDebounce } from '../../common/hooks/useDebounce'
 
 export const HomePage = () => {
   const dispatch = useAppDispatch()
-  const { articles, isLoading } = useAppSelector((state) => state.news)
+  const { isLoading } = useAppSelector((state) => state.news)
   const [search, setSearch] = useState('')
   const debouncedSearchValue = useDebounce(search)
-  const articlesToRender = useSearch(debouncedSearchValue, articles)
+  const articlesToRender = useSearch(debouncedSearchValue)
 
   useEffect(() => {
     dispatch(fetchArticles())
